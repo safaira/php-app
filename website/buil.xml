@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="MyPHPApp" default="build">
+
+    <!-- Define properties -->
+    <property name="phpunit.bin" value="vendor/bin/phpunit" />
+    <property name="artifact.dir" value="build/artifacts" />
+
+    <!-- Define targets -->
+    <target name="build" depends="install_dependencies, run_tests, generate_artifacts">
+        <!-- All build tasks will be executed in order -->
+    </target>
+
+    <target name="install_dependencies">
+        <echo message="Installing Composer dependencies..." />
+        <exec executable="composer">
+            <arg value="install" />
+            <!-- You can add more arguments here if needed -->
+        </exec>
+    </target>
+
+    <target name="run_tests" depends="install_dependencies">
+        <echo message="Running PHPUnit tests..." />
+        <exec executable="${phpunit.bin}">
+            <!-- You can add more PHPUnit options or specify test directories here -->
+        </exec>
+    </target>
+
+    <target name="generate_artifacts" depends="run_tests">
+        <echo message="Generating artifacts..." />
+        <!-- Copy files to the artifact directory or perform any other actions to generate artifacts -->
+        <copy todir="${artifact.dir}">
+            <!-- You can specify the source files/directories to be copied here -->
+        </copy>
+    </target>
+
+</project>
