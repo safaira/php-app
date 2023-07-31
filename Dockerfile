@@ -8,4 +8,4 @@ WORKDIR /var/www/html
 COPY . /var/www/html
 
 # Expose the port that your PHP application is listening on (replace 80 with the appropriate port)
-EXPOSE 8080
+EXPOSE 8181
